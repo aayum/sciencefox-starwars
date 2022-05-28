@@ -55,7 +55,7 @@ class CharacterSearchHomePresenterTest {
 
     }
 
-   /* @Test
+   @Test
     fun testLoadCharacters() {
         `when`(service.getCharacterList()).thenReturn(
             Single.just(
@@ -66,17 +66,6 @@ class CharacterSearchHomePresenterTest {
         verify(view).hideLoader()
         verify(view).handleCharacterResponse(CharacterResponse(arrayListOf()))
     }
-
-    @Test
-    fun testResolveCharacter(){
-        presenter.resolveCharacter(CharacterResponseModel(
-            name = "n",
-            birthYear = "m",
-            height = "h",
-            films = arrayListOf("asd")
-        ))
-        verify(service).getFilms().test()
-    }*/
 
     @Test
     fun testMapToCharacter() {
