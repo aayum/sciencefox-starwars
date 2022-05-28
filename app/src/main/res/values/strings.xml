@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Star Wars</string>
+    <string name="name">Name</string>
+    <string name="birth_year">Birth year</string>
+    <string name="height">Height</string>
+    <string name="films">Films</string>
+    <string name="crawl">Opening crawl</string>
+    <string name="search">Search your character</string>
+    <string name="fragment_tag">CharacterHomeFragment</string>
+
+</resources>
