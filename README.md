@@ -32,3 +32,15 @@ MVVM can be ued along with live data
 Coroutines can be used 
 
 For both of the above , I have basic knowledge.
+
+
+### Screenshots from the app
+
+![alt text](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/home_screen.png)
+
+![alt text](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/loader.png)
+
+![alt text](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/character_list.png)
+
+![alt text](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/character_details.png)
+
