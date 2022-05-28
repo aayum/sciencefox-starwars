@@ -36,11 +36,11 @@ For both of the above , I have basic knowledge.
 
 ### Screenshots from the app
 
-![alt text](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/home_screen.png)
+![Home screen](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/home_screen.png)
 
-![alt text](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/loader.png)
+![loader](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/loader.png)
 
-![alt text](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/character_list.png)
+![character_list](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/character_list.png)
 
-![alt text](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/character_details.png)
+![character_details](https://github.com/aayum/sciencefox-starwars/tree/master/screenshots/character_details.png)
 
