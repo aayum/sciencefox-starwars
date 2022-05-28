@@ -1,10 +1,10 @@
 package com.sciencefox.starwars.characterlisthome
 
-import android.util.Log
 import com.sciencefox.starwars.model.Character
 import com.sciencefox.starwars.model.CharacterResponseModel
 import com.sciencefox.starwars.model.FilmsResponse
 import com.sciencefox.starwars.networking.RetrofitAPIClient
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
@@ -40,9 +40,33 @@ class CharacterSearchHomePresenter(
     override fun resolveCharacter(character: CharacterResponseModel) {
         filmList = arrayListOf()
         crawlList = arrayListOf()
-        for (film in character.films) {
-            getFilms(film)
-        }
+
+        Observable
+            .fromIterable(character.films)
+            .map {
+                getFilms(it)
+                println("Map first")
+            }
+            .doOnComplete {
+                //characterSelected = mapToCharacter(character)
+                //view?.openDetailsFragment(characterSelected)
+                println("do om complete")
+            }
+            .subscribe({
+                characterSelected = mapToCharacter(character)
+                println("subscrbe")
+            }, {
+                // error
+            },
+                {
+                    //on complete
+                    view?.openDetailsFragment(characterSelected)
+
+                    println("COMPLETEEEEEEEE")
+                })
+            .dispose()
+
+        println("Observable finished")
     }
 
     override fun getFilms(url: String) {
@@ -50,13 +74,14 @@ class CharacterSearchHomePresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe { filmList ->
+                println("subscribe film")
                 handleFilms(filmList)
             }
             .addTo(compositeDisposable)
     }
 
     override fun mapToCharacter(character: CharacterResponseModel): Character {
-        Log.d("CHARCATERRRRR", "$character  $filmList $crawlList")
+        println("CHARCATERRRRR$character  $filmList $crawlList")
         return Character(
             name = character.name,
             birthYear = character.birthYear,
@@ -68,8 +93,8 @@ class CharacterSearchHomePresenter(
 
     override fun handleItemClick(character: CharacterResponseModel) {
         resolveCharacter(character)
-        characterSelected = mapToCharacter(character)
-        view?.openDetailsFragment(characterSelected)
+        // characterSelected = mapToCharacter(character)
+        //view?.openDetailsFragment(characterSelected)
     }
 
     override fun detach() {
@@ -79,8 +104,8 @@ class CharacterSearchHomePresenter(
     private fun handleFilms(films: FilmsResponse) {
         filmList.add(films.title.toString())
         crawlList.add(films.openingCrawl.toString())
-        Log.d("FILMLIST", "  ${filmList} ")
-        Log.d("CRAWLLIST", "   ${crawlList}")
+        println("FILMLIST  $filmList")
+        println("CRAWLLIST $crawlList")
 
     }
 }

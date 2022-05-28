@@ -1,6 +1,5 @@
 package com.sciencefox.starwars.networking
 
-import android.util.Log
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -13,6 +12,7 @@ class RetrofitAPIClient {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(provideHttpClient())
             .build()
             .create(NetworkService::class.java)
     }
@@ -27,10 +27,9 @@ class RetrofitAPIClient {
             .create(NetworkService::class.java)
     }
 
-    fun provideHttpClient(): OkHttpClient {
+    private fun provideHttpClient(): OkHttpClient {
         return OkHttpClient().newBuilder().addInterceptor { chain ->
             val request = chain.request()
-            Log.d("TAG", "provideHttpClient: Netwrok Request = $request")
             chain.proceed(request)
         }.build()
     }
